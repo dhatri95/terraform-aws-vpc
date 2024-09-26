@@ -48,6 +48,14 @@ resource "aws_subnet" "database" {
   })
 }
 
+## DB subnet group##
+resource "aws_db_subnet_group" "default" {
+  name       = "${var.project}-${var.env}"
+  subnet_ids = aws.subnet.database[*].id
+
+  tags = merge(var.db_subnet_grp_tags,local.tag)
+}
+
 ## Elastic IP ##
 resource "aws_eip" "nat" {
   domain   = "vpc"

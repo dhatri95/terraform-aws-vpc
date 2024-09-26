@@ -70,6 +70,10 @@ variable "db_cidrs" {
   
 }
 
+variable "db_subnet_grp_tags" {
+  default = {}
+}
+
 variable "eip_tags" {
     default = {}    
 }
